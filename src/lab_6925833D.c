@@ -2,12 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 #define MAX_LINE_LEN 1000
+#define FILE_1_PATH "file_1.txt"
+#define FILE_2_PATH "file_2.txt"
 
 int compare_files(  FILE *file_1, FILE *file_2, 
                     char *line_1, char *line_2, int *line_number )
 {
-    // TODO: write your code here
+    while (1)
+  {
+      char *r1 = fgets(line_1, MAX_LINE_LEN, file_1);
+      char *r2 = fgets(line_2, MAX_LINE_LEN, file_2);
+
+      if (r1 == NULL && r2 == NULL)
+          return 0;
+      if (r1 == NULL || r2 == NULL)
+          return 1;
+
+      if (strcmp(line_1, line_2) == 0)
+      {
+          (*line_number)++;
+      }
+      else
+      {
+          return 1;
+      }
+  }
 }
 
 // DO NOT change the code below
